@@ -29,3 +29,10 @@ logging:
       org.springframework.web: DEBUG
       com.howtodoinjava: DEBUG
       org.hibernate: DEBUG
+#通过HTTP发送shutdown信号
+endpoints : 
+      #启用shutdown   
+      shutdown : 
+         enabled : true
+         #禁用密码验证
+         sensitive : false

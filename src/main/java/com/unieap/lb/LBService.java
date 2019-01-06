@@ -46,7 +46,7 @@ public class LBService {
 		String url = request.getRequestURL().toString();
 		if (url.indexOf(httpServicePrfix) > 0) {
 			return restTemplate.postForObject("http://UNIEAP-ESB" + url.substring(url.indexOf(httpServicePrfix)),
-					request, String.class);
+					requestInfo, String.class);
 		} else {
 			return restTemplate.getForObject(url, String.class);
 		}
