@@ -69,7 +69,7 @@ public class SoapCallUtils {
 		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 		// 3：设置连接参数
 		// 3.1设置发送方式：POST必须大写
-		connection.setRequestMethod("GET");
+		connection.setRequestMethod("POST");
 		// 3.2设置数据格式：Content-type
 		connection.setRequestProperty("Content-Type", "text/xml;charset=UTF-8");
 		// 3.3设置输入输出，新创建的connection默认是没有读写权限的，

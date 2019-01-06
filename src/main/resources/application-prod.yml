@@ -1,0 +1,31 @@
+eureka:
+  instance:
+    prefer-ip-address: true #以IP地址注册到服务中心
+  client:
+    healthcheck:
+       enabled: true
+    serviceUrl:
+      defaultZone: http://172.30.8.253:8761/eureka/      
+##################################################
+server:
+  port: 8765
+  address: 172.30.8.253
+  #servlet: 
+  #   context-path: /eureka-ribbon-service
+spring:
+  application:
+    name: eureka-ribbon-service
+microservice-provider-user:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+# 共有8个级别，按照从低到高为：ALL < TRACE < DEBUG < INFO < WARN < ERROR < FATAL < OFF。
+logging:
+   file: logs/eureka-ribbon-service/application-error.log
+   pattern:
+     console: "%d %-5level %logger : %msg%n"
+     file: "%d %-5level [%thread] %logger : %msg%n"
+   level:
+      org.springframework: ERROR
+      org.springframework.web: ERROR
+      com.howtodoinjava: ERROR
+      org.hibernate: ERROR

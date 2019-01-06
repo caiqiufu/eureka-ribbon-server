@@ -1,20 +1,4 @@
-eureka:
-  instance:
-    prefer-ip-address: true #以IP地址注册到服务中心
-  client:
-    healthcheck:
-       enabled: true
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/      
-
-server:
-  port: 8765
-  address: localhost
-  #servlet: 
-  #   context-path: /eureka-ribbon-service
-spring:
-  application:
-    name: eureka-ribbon-service
-microservice-provider-user:
-  ribbon:
-    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+spring:  
+  profiles : 
+     #指定读取配置文件:dev(开发环境),prod(生产环境),qa(测试环境)
+     active : prod
