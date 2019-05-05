@@ -5,6 +5,8 @@ eureka:
     healthcheck:
        enabled: true
     serviceUrl:
+      #在eureka双机上注册
+      #http://master:8761/eureka/,http://slave:8762/eureka/,
       defaultZone: http://127.0.0.1:8761/eureka/      
 ##################################################
 server:
