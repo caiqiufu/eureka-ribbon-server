@@ -26,6 +26,7 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 
+import com.unieap.base.vo.BizConfigVO;
 import com.unieap.base.vo.InfConfigVO;
 
 public class SoapCallUtils {
@@ -64,8 +65,8 @@ public class SoapCallUtils {
 		return response;
 	}
 
-	public static String callHTTPService(InfConfigVO infConfigVO, String request) throws Exception {
-		URL url = new URL(infConfigVO.getUrl());
+	public static String callHTTPService(BizConfigVO bizConfigVO, String request) throws Exception {
+		URL url = new URL(bizConfigVO.getUrl());
 		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 		// 3：设置连接参数
 		// 3.1设置发送方式：POST必须大写
@@ -75,6 +76,7 @@ public class SoapCallUtils {
 		// 3.3设置输入输出，新创建的connection默认是没有读写权限的，
 		connection.setDoInput(true);
 		connection.setDoOutput(true);
+		connection.setRequestProperty("SOAPAction",bizConfigVO.getSOAPAction());
 		// Post 请求不能使用缓存
 		connection.setUseCaches(false);
 		// 连接，从上述第2条中url.openConnection()至此的配置必须要在connect之前完成

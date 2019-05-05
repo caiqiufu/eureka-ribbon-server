@@ -12,9 +12,6 @@ server:
   address: 172.30.8.253
   #servlet: 
   #   context-path: /eureka-ribbon-service
-spring:
-  application:
-    name: eureka-ribbon-service
 microservice-provider-user:
   ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
@@ -36,3 +33,28 @@ endpoints :
          enabled : true
          #禁用密码验证
          sensitive : false
+#数据库配置###################################### 
+spring: 
+  datasource :
+    url : jdbc:mysql://127.0.0.1:3306/unieap?characterencoding=utf-8;GenerateSimpleParameterMetadata=true
+    username : unieap  
+    password : unieap  
+    driverClassName : com.mysql.jdbc.Driver
+    initialSize : 5
+    minIdle : 5
+    maxActive : 20
+    maxWait : 60000
+    #自动检测关闭和空闲连接的间隔
+    timeBetweenEvictionRunsMillis : 30000
+    #最小生存时间
+    minEvictableIdleTimeMillis : 300000
+    #validationQuery:SELECT 1 FROM DUAL
+    testWhileIdle : true
+    #这个参数设置为true，可以保证每次的连接都是正常的，但是。。 性能会降低， 建议使用空闲下检测30s一次， 这样服务器最多30s出现问题后恢复
+    testOnBorrow : false
+    testOnReturn : false
+    #connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=3000
+    #filters:stat
+    #PSCatch
+    poolPreparedStatements : true
+    maxPoolPreparedStatementPerConnectionSize : 20
